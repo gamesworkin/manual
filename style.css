@@ -1,0 +1,186 @@
+/* Reset de Estilos Básicos */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #121212;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Container Principal */
+.container {
+    max-width: 800px;
+    width: 100%;
+    background-color: #000000;
+    border: 4px solid #ffffff;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+/* Cabeçalho */
+.main-header {
+    text-align: center;
+    background-color: #000000;
+    padding: 15px 10px;
+    margin-bottom: 15px;
+}
+
+.main-header h1 {
+    font-size: 2.2rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    font-family: 'Impact', 'Arial Black', sans-serif;
+    color: #ffffff;
+}
+
+.main-header h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 5px;
+    color: #ffffff;
+}
+
+/* Caixa de Introdução */
+.intro-box {
+    border: 2px solid #ffffff;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+}
+
+.intro-box p {
+    font-size: 1.05rem;
+    line-height: 1.5;
+    text-align: justify;
+}
+
+/* Layout dos Modos (Lado a Lado) */
+.modes-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+    .modes-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+.mode-card {
+    border: 2px solid #ffffff;
+    border-radius: 4px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.mode-card h3 {
+    font-size: 1.15rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 15px;
+    min-height: 45px;
+}
+
+/* Listas de Passos */
+.steps-list {
+    list-style-type: none;
+    counter-reset: step-counter;
+    margin-bottom: 20px;
+}
+
+.steps-list li {
+    counter-increment: step-counter;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+.steps-list li::before {
+    content: counter(step-counter);
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: #ffffff;
+    color: #000000;
+    font-weight: bold;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+}
+
+/* Badges de Botões do Controle */
+.btn-badge {
+    background-color: #ffffff;
+    color: #000000;
+    font-weight: bold;
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+}
+
+.alert-text {
+    color: #ff3b30;
+}
+
+/* Área dos QR Codes */
+.qr-container {
+    background-color: #ffffff;
+    color: #000000;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    margin-top: auto;
+}
+
+.qr-code {
+    width: 140px;
+    height: 140px;
+    display: block;
+    margin: 0 auto 10px auto;
+    object-fit: contain;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+.qr-label {
+    font-family: 'Impact', 'Arial Black', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+}
+
+/* Rodapé de Aviso */
+.warning-footer {
+    border: 2px solid #ffffff;
+    border-radius: 4px;
+    padding: 15px;
+}
+
+.warning-footer p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    text-align: justify;
+}
+
+.highlight-red {
+    color: #ff3b30;
+    font-weight: bold;
+}
