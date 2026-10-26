@@ -1,30 +1,42 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // 1. Bloqueio do botão direito nos QR codes
-    const qrImages = document.querySelectorAll('.no-context');
+const bar = document.getElementById('pb'); 
+const pct = document.getElementById('percent');
+let val = 0;
 
-    qrImages.forEach(image => {
-        image.addEventListener('contextmenu', (event) => {
-            event.preventDefault();
-        });
-
-        image.addEventListener('dragstart', (event) => {
-            event.preventDefault();
-        });
-    });
-
-    // 2. Funcionalidade para baixar o manual via PDF
-    const btnPdf = document.getElementById('btn-pdf');
-    if (btnPdf) {
-        btnPdf.addEventListener('click', () => {
-            // Altera dinamicamente o título do documento para ser o nome padrão do arquivo PDF
-            const originalTitle = document.title;
-            document.title = "Manual_OPL_FMCB_Funtuna";
-            
-            // Abre o utilitário nativo de salvar/imprimir do sistema
-            window.print();
-            
-            // Restaura o título do site na aba do navegador após fechar a janela
-            document.title = originalTitle;
-        });
+function update() {
+    val += 0.8; // Velocidade do carregamento
+    
+    if(val >= 100) {
+        val = 100;
+        bar.style.width = val + '%';
+        pct.innerText = '100%';
+        
+        // Aguarda 1 segundo antes de reiniciar
+        setTimeout(() => {
+            val = 0;
+            update();
+        }, 1000);
+    } else {
+        bar.style.width = val + '%';
+        pct.innerText = Math.floor(val) + '%';
+        requestAnimationFrame(update);
     }
-});
+}
+
+update();
+
+// Efeito de pulsação suave no botão do WhatsApp
+const waButton = document.querySelector('.whatsapp-float');
+if (waButton) {
+    waButton.style.animation = "pulse 2s infinite";
+    
+    // Injetando o keyframe da animação via JS para não precisar mexer no CSS
+    const style = document.createElement('style');
+    style.innerHTML = `
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+    `;
+    document.head.appendChild(style);
+}
